@@ -264,6 +264,21 @@ export interface UserAnimeWatchStatuse {
   backdrop: string
 }
 
+export interface UserAnimeWatchStatusResponse {
+  data: UserAnimeWatchStatus
+  status: number
+}
+
+export interface UserAnimeWatchStatus {
+  id: number
+  created_at: string
+  updated_at: number
+  anime_id: number
+  status: string
+  user_id: number
+}
+
+
 export const API_BASE_URL = "https://fireani.me/api"
 export const API_BASE_IMG_URL = "https://fireani.me"
 
@@ -366,13 +381,12 @@ export async function postUserLogin(username: string, password: string): Promise
   return response.json()
 }
 
-export async function postUserResetPassword(new_password: string) {
-  // TODO
+export async function postUserResetPassword(new_password: string): Promise<{ data: string, status: number }> {
   const response = await fetch(`${API_BASE_URL}/user/reset-password`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // ...getAuthHeaders(),
+      Authorization: `${getAuthHeaders().Authorization}`,
     },
     body: JSON.stringify({ new_password }),
   })
@@ -406,7 +420,7 @@ export async function getUserEpisodesLiked(page: number): Promise<UserLikedEpiso
   return response.json()
 }
 
-type WatchStatus = "watching" | "plan_to_watch" | "rewatching" | "completed" | "paused" | "dropped"
+export type WatchStatus = "watching" | "plan_to_watch" | "rewatching" | "completed" | "paused" | "dropped"
 export async function getUserAnimeWatchStatuses(
   status: WatchStatus,
   page: number,
@@ -424,6 +438,54 @@ export async function getUserAnimeWatchStatuses(
   }
   return response.json()
 }
+
+export async function putUserAnimeWatchStatus(animeId: number, status: WatchStatus): Promise<{ data: string, status: number }> {
+  const response = await fetch(`${API_BASE_URL}/user/anime/watch/status`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${getAuthHeaders().Authorization}`,
+    },
+    body: JSON.stringify({ anime_id: animeId, status: status }),
+  })
+  if (!response.ok) {
+    throw new Error("Failed to update anime watch status")
+  }
+  return response.json()
+}
+
+export async function deleteUserAnimeWatchStatus(animeId: number): Promise<{ data: string, status: number }> {
+  const response = await fetch(`${API_BASE_URL}/user/anime/watch/status`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${getAuthHeaders().Authorization}`,
+    },
+    body: JSON.stringify({ anime_id: animeId }),
+  })
+  if (!response.ok) {
+    throw new Error("Failed to delete anime watch status")
+  }
+  return response.json()
+}
+
+export async function getUserAnimeWatchStatus(
+  animeId: number
+): Promise<UserAnimeWatchStatusResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/user/anime/watch/status?anime_id=${encodeURIComponent(animeId)}`,
+    {
+      headers: {
+        Authorization: `${getAuthHeaders().Authorization}`,
+      }
+    },
+  )
+  if (!response.ok) {
+    throw new Error("Failed to get anime watch status")
+  }
+  return response.json()
+}
+
 
 // Helper function to get auth headers
 function getAuthHeaders() {

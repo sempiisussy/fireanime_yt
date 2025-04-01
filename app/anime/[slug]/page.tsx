@@ -6,6 +6,7 @@ import { Star, Calendar, Play, Eye } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { API_BASE_IMG_URL, getAnimeDetails } from "@/lib/api"
+import { SelectWatchStatus } from "@/components/select-watch-status"
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params
@@ -81,6 +82,8 @@ export default async function AnimePage(props: { params: Promise<{ slug: string 
                   </Link>
                 </Button>
               )}
+
+              <SelectWatchStatus animeId={anime.id} />
             </div>
           </div>
 
