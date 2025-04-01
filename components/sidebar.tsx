@@ -3,15 +3,30 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Calendar, Compass, Search, TrendingUp, Clock, ThumbsUp, History, Flame, Menu } from "lucide-react"
+import {
+  Home,
+  Calendar,
+  Compass,
+  Search,
+  TrendingUp,
+  Clock,
+  ThumbsUp,
+  History,
+  Flame,
+  Menu,
+  Heart,
+  List,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useAuth } from "@/lib/auth"
 
 export default function Sidebar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const { user } = useAuth()
 
   useEffect(() => {
     const checkMobile = () => {
@@ -100,6 +115,46 @@ export default function Sidebar() {
         </div>
       </div>
 
+      {user && (
+        <div className="px-3 py-2">
+          <div className="mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            My Library
+          </div>
+          <div className="space-y-1">
+            <Link href="/history" passHref>
+              <Button
+                variant={isActive("/history") ? "secondary" : "ghost"}
+                className="w-full justify-start gap-3"
+                size="sm"
+              >
+                <History className="h-4 w-4" />
+                <span>Watch History</span>
+              </Button>
+            </Link>
+            <Link href="/liked" passHref>
+              <Button
+                variant={isActive("/liked") ? "secondary" : "ghost"}
+                className="w-full justify-start gap-3"
+                size="sm"
+              >
+                <Heart className="h-4 w-4" />
+                <span>Liked Episodes</span>
+              </Button>
+            </Link>
+            <Link href="/watchlist" passHref>
+              <Button
+                variant={isActive("/watchlist") ? "secondary" : "ghost"}
+                className="w-full justify-start gap-3"
+                size="sm"
+              >
+                <List className="h-4 w-4" />
+                <span>My Watchlist</span>
+              </Button>
+            </Link>
+          </div>
+        </div>
+      )}
+
       <div className="px-3 py-2">
         <div className="mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">About</div>
         <div className="space-y-1">
@@ -119,7 +174,7 @@ export default function Sidebar() {
               className="w-full justify-start gap-3"
               size="sm"
             >
-              <History className="h-4 w-4" />
+              <Clock className="h-4 w-4" />
               <span>Terms</span>
             </Button>
           </Link>

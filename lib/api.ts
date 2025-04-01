@@ -264,8 +264,6 @@ export interface UserAnimeWatchStatuse {
   backdrop: string
 }
 
-
-
 export const API_BASE_URL = "https://fireani.me/api"
 export const API_BASE_IMG_URL = "https://fireani.me"
 
@@ -354,14 +352,13 @@ export async function getNewestEpisodes(page: number): Promise<NewestAnimeEpisod
   return response.json()
 }
 
-
 export async function postUserLogin(username: string, password: string): Promise<UserLoginResponse> {
-  const response = await fetch(`${API_BASE_URL}/api/login`, {
-    method: "post",
+  const response = await fetch(`${API_BASE_URL}/login`, {
+    method: "POST",
     headers: {
-      "content-type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username: username, password: password })
+    body: JSON.stringify({ username, password }),
   })
   if (!response.ok) {
     throw new Error("Failed to login")
@@ -369,44 +366,68 @@ export async function postUserLogin(username: string, password: string): Promise
   return response.json()
 }
 
-export async function postUserResetPassword(new_password: string) { // TODO
-  const response = await fetch(`${API_BASE_URL}/api/login`, {
-    method: "post",
+export async function postUserResetPassword(new_password: string) {
+  // TODO
+  const response = await fetch(`${API_BASE_URL}/user/reset-password`, {
+    method: "POST",
     headers: {
-      "content-type": "application/json"
+      "Content-Type": "application/json",
+      // ...getAuthHeaders(),
     },
-    body: JSON.stringify({ new_password: new_password })
+    body: JSON.stringify({ new_password }),
   })
   if (!response.ok) {
-    throw new Error("Failed to login")
+    throw new Error("Failed to reset password")
   }
   return response.json()
 }
 
 export async function getUserLastSeen(): Promise<UserLastSeenResponse> {
   const response = await fetch(`${API_BASE_URL}/anime/episode/lastseen`, {
-    next: { revalidate: 5 },
+    headers: {
+      Authorization: `${getAuthHeaders().Authorization}`,
+    },
   })
   if (!response.ok) {
-    throw new Error("Failed to list best last seen animes")
+    throw new Error("Failed to get last seen episodes")
   }
   return response.json()
 }
 
 export async function getUserEpisodesLiked(page: number): Promise<UserLikedEpisodesResponse> {
-  const response = await fetch(`${API_BASE_URL}/anime/episodes/liked?page=${encodeURIComponent(page)}`, {})
+  const response = await fetch(`${API_BASE_URL}/anime/episodes/liked?page=${encodeURIComponent(page)}`, {
+    headers: {
+      Authorization: `${getAuthHeaders().Authorization}`,
+    },
+  })
   if (!response.ok) {
-    throw new Error("Failed to list best liked episodes")
+    throw new Error("Failed to get liked episodes")
   }
   return response.json()
 }
-
 
 type WatchStatus = "watching" | "plan_to_watch" | "rewatching" | "completed" | "paused" | "dropped"
-export async function getUserAnimeWatchStatuses(status: WatchStatus, page: number): Promise<UserAnimeWatchStatusesResponse> {
-  const response = await fetch(`${API_BASE_URL}/user/animes/watch/status?page=${encodeURIComponent(page)}&status=${encodeURIComponent(status)}`, {})
+export async function getUserAnimeWatchStatuses(
+  status: WatchStatus,
+  page: number,
+): Promise<UserAnimeWatchStatusesResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/user/animes/watch/status?page=${encodeURIComponent(page)}&status=${encodeURIComponent(status)}`,
+    {
+      headers: {
+        Authorization: `${getAuthHeaders().Authorization}`,
+      }
+    },
+  )
   if (!response.ok) {
-    throw new Error("Failed to list best liked episodes")
+    throw new Error("Failed to get anime watch statuses")
   }
   return response.json()
 }
+
+// Helper function to get auth headers
+function getAuthHeaders() {
+  const token = typeof window !== "undefined" ? localStorage.getItem("fireAnimeToken") : null
+  return token ? { Authorization: `Bearer ${token}` } : {}
+}
+

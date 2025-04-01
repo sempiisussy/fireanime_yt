@@ -9,6 +9,7 @@ import Footer from "@/components/footer"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import NextTopLoader from "nextjs-toploader"
+import { AuthProvider } from "@/lib/auth"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,15 +28,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} flex flex-col min-h-screen bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <NextTopLoader color="#FF0000" />
-          <Navbar />
-          <div className="flex flex-1 pt-16">
-            <Sidebar />
-            <main className="flex-1 w-full">{children}</main>
-          </div>
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
+          <AuthProvider>
+            <NextTopLoader color="#FF0000" />
+            <Navbar />
+            <div className="flex flex-1 pt-16">
+              <Sidebar />
+              <main className="flex-1 w-full">{children}</main>
+            </div>
+            <Footer />
+            <Analytics />
+            <SpeedInsights />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -4,6 +4,7 @@ import { ChevronRight } from "lucide-react"
 import { getBest, getNewestEpisodes } from "@/lib/api"
 import AnimeGrid from "@/components/anime-grid"
 import AnimeEpisodeGrid from "@/components/anime-episode-grid"
+import LastSeenEpisodes from "@/components/last-seen-episodes"
 
 export const metadata = {
   title: "FireAnime - Home",
@@ -21,6 +22,8 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col w-full lg:pl-60">
       <div className="container py-6">
+        <LastSeenEpisodes />
+
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">Trending Now</h2>
