@@ -205,6 +205,67 @@ export interface AnimeFromGenre {
   anime_seasons: any
 }
 
+export interface UserLoginResponse {
+  data: UserLogin
+  status: number
+}
+
+export interface UserLogin {
+  is_admin: boolean
+  token: string
+}
+
+export interface UserLastSeenResponse {
+  data: UserLastSeen[]
+  status: number
+}
+
+export interface UserLastSeen {
+  anime_id: number
+  anime: AnimeDetails
+  season: string
+  episode: string
+  position: number
+}
+
+export interface UserLikedEpisodesResponse {
+  data: UserLikedEpisode[]
+  pages: number
+  status: number
+}
+
+export interface UserLikedEpisode {
+  updated_at: number
+  anime_id: number
+  slug: string
+  season: string
+  episode: string
+  title: string
+  start: number
+  end: number
+  poster: string
+  backdrop: string
+}
+
+export interface UserAnimeWatchStatusesResponse {
+  data: UserAnimeWatchStatuse[]
+  pages: number
+  status: number
+}
+
+export interface UserAnimeWatchStatuse {
+  updated_at: number
+  anime_id: number
+  slug: string
+  title: string
+  start: number
+  end: number
+  poster: string
+  backdrop: string
+}
+
+
+
 export const API_BASE_URL = "https://fireani.me/api"
 export const API_BASE_IMG_URL = "https://fireani.me"
 
@@ -293,3 +354,59 @@ export async function getNewestEpisodes(page: number): Promise<NewestAnimeEpisod
   return response.json()
 }
 
+
+export async function postUserLogin(username: string, password: string): Promise<UserLoginResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/login`, {
+    method: "post",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({ username: username, password: password })
+  })
+  if (!response.ok) {
+    throw new Error("Failed to login")
+  }
+  return response.json()
+}
+
+export async function postUserResetPassword(new_password: string) { // TODO
+  const response = await fetch(`${API_BASE_URL}/api/login`, {
+    method: "post",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({ new_password: new_password })
+  })
+  if (!response.ok) {
+    throw new Error("Failed to login")
+  }
+  return response.json()
+}
+
+export async function getUserLastSeen(): Promise<UserLastSeenResponse> {
+  const response = await fetch(`${API_BASE_URL}/anime/episode/lastseen`, {
+    next: { revalidate: 5 },
+  })
+  if (!response.ok) {
+    throw new Error("Failed to list best last seen animes")
+  }
+  return response.json()
+}
+
+export async function getUserEpisodesLiked(page: number): Promise<UserLikedEpisodesResponse> {
+  const response = await fetch(`${API_BASE_URL}/anime/episodes/liked?page=${encodeURIComponent(page)}`, {})
+  if (!response.ok) {
+    throw new Error("Failed to list best liked episodes")
+  }
+  return response.json()
+}
+
+
+type WatchStatus = "watching" | "plan_to_watch" | "rewatching" | "completed" | "paused" | "dropped"
+export async function getUserAnimeWatchStatuses(status: WatchStatus, page: number): Promise<UserAnimeWatchStatusesResponse> {
+  const response = await fetch(`${API_BASE_URL}/user/animes/watch/status?page=${encodeURIComponent(page)}&status=${encodeURIComponent(status)}`, {})
+  if (!response.ok) {
+    throw new Error("Failed to list best liked episodes")
+  }
+  return response.json()
+}
