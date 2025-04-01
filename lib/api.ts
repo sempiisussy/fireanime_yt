@@ -398,6 +398,21 @@ export async function postUserLogin(username: string, password: string): Promise
   return response.json()
 }
 
+export async function postUserRegister(username: string, password: string, captcha_response: string): Promise<{ status: number, data: string }> {
+  const response = await fetch(`${API_BASE_URL}/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, password, captcha_response }),
+  })
+  if (!response.ok) {
+    const res = await response.json()
+    throw new Error(`Register failed: ${res.error}`)
+  }
+  return response.json()
+}
+
 export async function postUserResetPassword(new_password: string): Promise<{ data: string, status: number }> {
   const response = await fetch(`${API_BASE_URL}/user/reset-password`, {
     method: "POST",
@@ -522,7 +537,7 @@ export async function getUserAnimeLikedStatus(
 }
 
 export async function putUserAnimeLikedStatus(slug: string, season: string, episode: string, is_liked: boolean): Promise<{ data: string, status: number }> {
-  const response = await fetch( `${API_BASE_URL}/anime/episode/liked`, {
+  const response = await fetch(`${API_BASE_URL}/anime/episode/liked`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -537,7 +552,7 @@ export async function putUserAnimeLikedStatus(slug: string, season: string, epis
 }
 
 export async function deleteUserAnimeLikedStatus(slug: string, season: string, episode: string): Promise<{ data: string, status: number }> {
-  const response = await fetch( `${API_BASE_URL}/anime/episode/liked`, {
+  const response = await fetch(`${API_BASE_URL}/anime/episode/liked`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
