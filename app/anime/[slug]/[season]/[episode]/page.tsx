@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight, ThumbsUp, ThumbsDown, Share2 } from "lucide-
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { type EpisodeDetails, type AnimeDetails, getEpisode, getAnimeDetails, API_BASE_IMG_URL } from "@/lib/api"
+import { EpisodeInteractionButtons } from "@/components/episode-interaction-buttons"
 
 export default function EpisodePage() {
   const params = useParams()
@@ -164,20 +165,7 @@ export default function EpisodePage() {
                 )}
               </div>
 
-              <div className="flex items-center gap-2 ml-auto">
-                <Button variant="outline" size="sm" className="flex items-center gap-1">
-                  <ThumbsUp className="h-4 w-4" />
-                  {episodeData?.like_count || 0}
-                </Button>
-                <Button variant="outline" size="sm" className="flex items-center gap-1">
-                  <ThumbsDown className="h-4 w-4" />
-                  {episodeData?.dislike_count || 0}
-                </Button>
-                <Button variant="outline" size="sm" className="flex items-center gap-1">
-                  <Share2 className="h-4 w-4" />
-                  Share
-                </Button>
-              </div>
+              <EpisodeInteractionButtons like_count={episodeData?.like_count} dislike_count={episodeData?.dislike_count} slug={slug} season={season} episode={episode} />
             </div>
 
             <div className="flex justify-between mb-8">

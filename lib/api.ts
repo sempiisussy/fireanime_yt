@@ -278,6 +278,23 @@ export interface UserAnimeWatchStatus {
   user_id: number
 }
 
+export interface UserAnimeLikeStatusResponse {
+  data: UserAnimeLikeStatus
+  status: number
+}
+
+export interface UserAnimeLikeStatus {
+  id: number
+  created_at: string
+  updated_at: number
+  slug: string
+  season: string
+  episode: string
+  is_liked: boolean
+  user_id: number
+}
+
+
 
 export const API_BASE_URL = "https://fireani.me/api"
 export const API_BASE_IMG_URL = "https://fireani.me"
@@ -486,6 +503,53 @@ export async function getUserAnimeWatchStatus(
   return response.json()
 }
 
+
+export async function getUserAnimeLikedStatus(
+  slug: string, season: string, episode: string
+): Promise<UserAnimeLikeStatusResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/anime/episode/liked?slug=${encodeURIComponent(slug)}&season=${encodeURIComponent(season)}&episode=${encodeURIComponent(episode)}`,
+    {
+      headers: {
+        Authorization: `${getAuthHeaders().Authorization}`,
+      }
+    },
+  )
+  if (!response.ok) {
+    throw new Error("Failed to get anime Liked status")
+  }
+  return response.json()
+}
+
+export async function putUserAnimeLikedStatus(slug: string, season: string, episode: string, is_liked: boolean): Promise<{ data: string, status: number }> {
+  const response = await fetch( `${API_BASE_URL}/anime/episode/liked`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${getAuthHeaders().Authorization}`,
+    },
+    body: JSON.stringify({ slug: slug, season: season, episode: episode, is_liked: is_liked }),
+  })
+  if (!response.ok) {
+    throw new Error("Failed to update anime Liked status")
+  }
+  return response.json()
+}
+
+export async function deleteUserAnimeLikedStatus(slug: string, season: string, episode: string): Promise<{ data: string, status: number }> {
+  const response = await fetch( `${API_BASE_URL}/anime/episode/liked`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${getAuthHeaders().Authorization}`,
+    },
+    body: JSON.stringify({ slug: slug, season: season, episode: episode }),
+  })
+  if (!response.ok) {
+    throw new Error("Failed to delete anime Liked status")
+  }
+  return response.json()
+}
 
 // Helper function to get auth headers
 function getAuthHeaders() {
