@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar"
 import Sidebar from "@/components/sidebar"
 import Footer from "@/components/footer"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import NextTopLoader from "nextjs-toploader"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -34,6 +35,7 @@ export default function RootLayout({
           </div>
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
