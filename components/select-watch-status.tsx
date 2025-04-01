@@ -4,12 +4,14 @@ import { useEffect, useState } from "react"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select"
 import { deleteUserAnimeWatchStatus, getUserAnimeWatchStatus, putUserAnimeWatchStatus, WatchStatus } from "@/lib/api"
 import { Button } from "./ui/button"
+import { useAuth } from "@/lib/auth"
 
 const statuses = ["watching", "plan_to_watch", "rewatching", "completed", "paused", "dropped"]
 
 export function SelectWatchStatus({ animeId }: { animeId: number }) {
     const [loading, setLoading] = useState(false)
     const [selected, setSelected] = useState<WatchStatus | null>(null)
+    const { user } = useAuth()
 
     function handleSelection(data: string) {
         if (statuses.includes(data)) {
@@ -36,6 +38,7 @@ export function SelectWatchStatus({ animeId }: { animeId: number }) {
     }
 
     function loadStatus() {
+        if(!user)return
         setLoading(true)
         getUserAnimeWatchStatus(animeId)
             .then(data => {
@@ -54,7 +57,7 @@ export function SelectWatchStatus({ animeId }: { animeId: number }) {
     }, [])
 
     return (
-        <Select onValueChange={handleSelection} value={selected ?? ""} disabled={loading}>
+        <Select onValueChange={handleSelection} value={selected ?? ""} disabled={loading || !user}>
             <SelectTrigger>
                 {loading
                     ? <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-600"></div>
