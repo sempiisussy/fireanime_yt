@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { InfoIcon } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - FireAnime",
-  description: "Privacy policy for the FireAnime streaming platform.",
+  title: "Privacy Policy - Ani.cx",
+  description: "Privacy policy for the Ani.cx streaming platform.",
 }
 
 export default function PrivacyPage() {
@@ -27,11 +27,11 @@ export default function PrivacyPage() {
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                At FireAnime, we take your privacy seriously. This Privacy Policy describes how your personal
+                At Ani.cx, we take your privacy seriously. This Privacy Policy describes how your personal
                 information is collected, used, and shared when you visit or make a purchase from our platform.
               </p>
               <p>
-                By using FireAnime, you agree to the collection and use of information in accordance with this policy.
+                By using Ani.cx, you agree to the collection and use of information in accordance with this policy.
                 We will not use or share your information with anyone except as described in this Privacy Policy.
               </p>
             </CardContent>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl font-bold mb-4">2. How We Use Your Information</h2>
               <div className="space-y-4">
-                <p>FireAnime uses the collected data for various purposes:</p>
+                <p>Ani.cx uses the collected data for various purposes:</p>
                 <ul className="list-disc pl-6 space-y-2 mt-2">
                   <li>To provide and maintain our Service</li>
                   <li>To notify you about changes to our Service</li>

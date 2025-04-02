@@ -15,12 +15,12 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     const anime = response.data
 
     return {
-      title: `${anime.title} - FireAnime`,
+      title: `${anime.title} - Ani.cx`,
       description: anime.desc.substring(0, 160),
     }
   } catch (error) {
     return {
-      title: "Anime - FireAnime",
+      title: "Anime - Ani.cx",
       description: "View anime details and episodes",
     }
   }

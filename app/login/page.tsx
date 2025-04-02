@@ -54,7 +54,7 @@ export default function LoginPage() {
               <Flame className="h-6 w-6" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold text-center">Login to FireAnime</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Login to Ani.cx</CardTitle>
           <CardDescription className="text-center">
             Enter your username and password to access your account
           </CardDescription>

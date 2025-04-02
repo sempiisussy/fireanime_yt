@@ -4,7 +4,7 @@ import { API_BASE_IMG_URL, getCalendar } from "@/lib/api"
 import { Calendar, Clock } from "lucide-react"
 
 export const metadata = {
-  title: "Anime Calendar - FireAnime",
+  title: "Anime Calendar - Ani.cx",
   description: "View the latest anime release schedule and upcoming episodes.",
 }
 

@@ -207,7 +207,7 @@ export default function Sidebar() {
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-red-600 text-white">
                 <Flame className="h-4 w-4" />
               </div>
-              <span>FireAnime</span>
+              <span>Ani.cx</span>
             </Link>
           </div>
           <ScrollArea className="h-[calc(100vh-64px)]">

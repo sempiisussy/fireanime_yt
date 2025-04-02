@@ -14,7 +14,7 @@ import { AuthProvider } from "@/lib/auth"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "FireAnime - Your Ultimate Anime Streaming Platform",
+  title: "Ani.cx - Your Ultimate Anime Streaming Platform",
   description: "Watch the latest anime episodes, explore new series, and stay up to date with the anime calendar.",
   generator: "Next.js",
 }

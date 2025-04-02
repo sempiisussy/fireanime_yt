@@ -40,7 +40,7 @@ const Navbar = () => {
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-white">
                 <Flame className="h-5 w-5" />
               </div>
-              <span className="text-lg font-bold">FireAnime</span>
+              <span className="text-lg font-bold">Ani.cx</span>
             </Link>
           </div>
         </div>

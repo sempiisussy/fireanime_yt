@@ -11,13 +11,13 @@ export async function generateMetadata(props: {
     genre = atob(params.genre)
   } catch (err) {
     return {
-      title: `Anime from the Genre - FireAnime`,
+      title: `Anime from the Genre - Ani.cx`,
       description: `Browse anime by genre category.`,
     }
   }
 
   return {
-    title: `Anime from the Genre ${genre} - FireAnime`,
+    title: `Anime from the Genre ${genre} - Ani.cx`,
     description: `Browse anime by genre category ${genre}.`,
   }
 }

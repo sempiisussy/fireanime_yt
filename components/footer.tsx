@@ -22,7 +22,7 @@ const Footer = () => {
           </Link>
         </div>
         <p className="text-center text-muted-foreground">
-          © {new Date().getFullYear()} FireAnime. All rights reserved.
+          © {new Date().getFullYear()} Ani.cx. All rights reserved.
         </p>
       </div>
     </footer>

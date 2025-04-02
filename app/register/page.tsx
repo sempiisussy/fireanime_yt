@@ -61,14 +61,14 @@ export default function RegisterPage() {
                 <Flame className="h-6 w-6" />
               </div>
             </div>
-            <CardTitle className="text-2xl font-bold text-center">Register to FireAnime</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center">Register to Ani.cx</CardTitle>
             <CardDescription className="text-center">
               Registration completed
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p>
-              You have successfully registered with FireAnime.
+              You have successfully registered with Ani.cx.
             </p>
             <p>
               Please note that your password cannot be reset as we do not store your e-mail address.
@@ -93,7 +93,7 @@ export default function RegisterPage() {
               <Flame className="h-6 w-6" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold text-center">Register to FireAnime</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Register to Ani.cx</CardTitle>
           <CardDescription className="text-center">
             Enter your username and password to access your account
           </CardDescription>

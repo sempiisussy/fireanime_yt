@@ -4,7 +4,7 @@ import AnimePagination from "@/components/pagination-universal"
 
 export async function generateMetadata() {
   return {
-    title: `Trending Animes on FireAnime - FireAnime`,
+    title: `Trending Animes on Ani.cx - Ani.cx`,
     description: `Browse Trending Animes that are currently loved all over the world.`,
   }
 }

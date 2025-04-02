@@ -4,7 +4,7 @@ import AnimeEpisodeGrid from "@/components/anime-episode-grid"
 
 export async function generateMetadata() {
   return {
-    title: `New Releases on FireAnime - FireAnime`,
+    title: `New Releases on Ani.cx - Ani.cx`,
     description: `Browse Newest Anime Releases that are currently loved all over the world.`,
   }
 }

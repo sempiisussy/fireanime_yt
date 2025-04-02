@@ -8,8 +8,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Heart, Users, Code, Globe, Github, MessageSquare } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "About FireAnime - A Community Project",
-  description: "Learn about FireAnime, a community-driven anime streaming platform created by fans, for fans.",
+  title: "About Ani.cx - A Community Project",
+  description: "Learn about Ani.cx, a community-driven anime streaming platform created by fans, for fans.",
 }
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
       <div className="container py-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-3xl font-bold mb-4">About FireAnime</h1>
+            <h1 className="text-3xl font-bold mb-4">About Ani.cx</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               A community-driven anime streaming platform created by fans, for fans.
             </p>
@@ -31,7 +31,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="text-center">
               <p className="text-lg mb-6">
-                FireAnime was born from a simple idea: to create a platform where anime fans can discover, watch, and
+                Ani.cx was born from a simple idea: to create a platform where anime fans can discover, watch, and
                 discuss their favorite series without barriers or commercial interests.
               </p>
               <div className="flex justify-center">
@@ -51,7 +51,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <p>
-                  FireAnime is a completely non-profit initiative. We don't run ads, sell user data, or charge
+                  Ani.cx is a completely non-profit initiative. We don't run ads, sell user data, or charge
                   subscription fees. Our platform is sustained entirely by community contributions and volunteer
                   efforts.
                 </p>
@@ -66,7 +66,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <p>
-                  Every aspect of FireAnime is shaped by our community. From content curation to feature development, we
+                  Every aspect of Ani.cx is shaped by our community. From content curation to feature development, we
                   rely on passionate anime fans who volunteer their time and expertise to make this platform better for
                   everyone.
                 </p>
@@ -81,7 +81,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <p>
-                  We believe in transparency and collaboration. That's why FireAnime is completely open source, allowing
+                  We believe in transparency and collaboration. That's why Ani.cx is completely open source, allowing
                   anyone to contribute to its development, suggest improvements, or adapt it for their own communities.
                 </p>
               </CardContent>
@@ -108,7 +108,7 @@ export default function AboutPage() {
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-center mb-8">Our Community Contributors</h2>
             <p className="text-center text-muted-foreground mb-8">
-              FireAnime wouldn't exist without these amazing volunteers who contribute their time and skills.
+              Ani.cx wouldn't exist without these amazing volunteers who contribute their time and skills.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -152,7 +152,7 @@ export default function AboutPage() {
                 <CardContent className="space-y-4">
                   <p>
                     Are you a developer, designer, or content creator? We're always looking for talented individuals to
-                    help improve FireAnime.
+                    help improve Ani.cx.
                   </p>
                   <div className="flex gap-4">
                     <Link href={"https://github.com/FireAnime/fireanime"} target="_blank">
@@ -186,7 +186,7 @@ export default function AboutPage() {
           <div className="bg-red-600/10 rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">Join Our Community</h2>
             <p className="mb-6">
-              FireAnime is more than just a platform—it's a community of passionate anime fans. Whether you're a casual
+              Ani.cx is more than just a platform—it's a community of passionate anime fans. Whether you're a casual
               viewer or a dedicated otaku, there's a place for you here.
             </p>
             <Button size="lg" className="bg-red-600 hover:bg-red-700" asChild>

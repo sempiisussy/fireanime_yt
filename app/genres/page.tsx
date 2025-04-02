@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { getGenres } from "@/lib/api"
 
 export const metadata = {
-  title: "Anime Genres - FireAnime",
+  title: "Anime Genres - Ani.cx",
   description: "Browse anime by genre categories.",
 }
 

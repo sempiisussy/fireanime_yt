@@ -7,7 +7,7 @@ import AnimeEpisodeGrid from "@/components/anime-episode-grid"
 import LastSeenEpisodes from "@/components/last-seen-episodes"
 
 export const metadata = {
-  title: "FireAnime - Home",
+  title: "Ani.cx - Home",
   description: "Watch the latest anime episodes and explore new series.",
 }
 

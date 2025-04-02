@@ -3,8 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 
 export const metadata: Metadata = {
-  title: "Terms of Service - FireAnime",
-  description: "Terms and conditions for using the FireAnime streaming platform.",
+  title: "Terms of Service - Ani.cx",
+  description: "Terms and conditions for using the Ani.cx streaming platform.",
 }
 
 export default function TermsPage() {
@@ -17,20 +17,20 @@ export default function TermsPage() {
 
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle>Welcome to FireAnime</CardTitle>
+              <CardTitle>Welcome to Ani.cx</CardTitle>
               <CardDescription>Please read these Terms of Service carefully before using our platform</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                By accessing or using the FireAnime service, website, and software applications (collectively, the
-                "FireAnime Service" or "our Service"), you are entering into a binding contract with FireAnime. Your
+                By accessing or using the Ani.cx service, website, and software applications (collectively, the
+                "Ani.cx Service" or "our Service"), you are entering into a binding contract with Ani.cx. Your
                 agreement with us includes these Terms of Service and our Privacy Policy. If you do not agree to these
-                Terms, you must not access or use the FireAnime Service.
+                Terms, you must not access or use the Ani.cx Service.
               </p>
               <p>
                 We may make changes to these Terms from time to time. If we make changes, we will notify you by revising
                 the date at the top of these Terms and, in some cases, we may provide you with additional notice. We
-                encourage you to review these Terms whenever you access the FireAnime Service to stay informed about our
+                encourage you to review these Terms whenever you access the Ani.cx Service to stay informed about our
                 practices.
               </p>
             </CardContent>
@@ -38,22 +38,22 @@ export default function TermsPage() {
 
           <div className="space-y-8">
             <section>
-              <h2 className="text-xl font-bold mb-4">1. Using FireAnime</h2>
+              <h2 className="text-xl font-bold mb-4">1. Using Ani.cx</h2>
               <div className="space-y-4">
                 <p>
-                  The FireAnime Service provides a platform for users to discover and watch anime content. You may use
-                  the FireAnime Service only if you can form a binding contract with FireAnime, and only in compliance
+                  The Ani.cx Service provides a platform for users to discover and watch anime content. You may use
+                  the Ani.cx Service only if you can form a binding contract with Ani.cx, and only in compliance
                   with these Terms and all applicable laws.
                 </p>
-                <h3 className="text-lg font-semibold mt-6 mb-2">1.1 FireAnime Accounts</h3>
+                <h3 className="text-lg font-semibold mt-6 mb-2">1.1 Ani.cx Accounts</h3>
                 <p>
-                  To access certain features of the FireAnime Service, you must register for an account. When you create
+                  To access certain features of the Ani.cx Service, you must register for an account. When you create
                   an account, you must provide accurate and complete information. You are solely responsible for the
                   activity that occurs on your account, and you must keep your account password secure.
                 </p>
                 <h3 className="text-lg font-semibold mt-6 mb-2">1.2 Age Requirements</h3>
                 <p>
-                  You must be at least 13 years of age to use the FireAnime Service. If you are under 18 years of age,
+                  You must be at least 13 years of age to use the Ani.cx Service. If you are under 18 years of age,
                   you must have your parent or legal guardian's permission to use the Service and to accept these Terms.
                 </p>
               </div>

@@ -3,7 +3,7 @@ import { SearchResults } from "@/components/search-results"
 import { SearchForm } from "@/components/search-form"
 
 export const metadata = {
-  title: "Search Anime - FireAnime",
+  title: "Search Anime - Ani.cx",
   description: "Search for your favorite anime series and episodes.",
 }
 
