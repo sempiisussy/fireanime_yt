@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { type EpisodeDetails, type AnimeDetails, getEpisode, getAnimeDetails, API_BASE_IMG_URL } from "@/lib/api"
 import { EpisodeInteractionButtons } from "@/components/episode-interaction-buttons"
+import { Player } from "@/components/player"
 
 export default function EpisodePage() {
   const params = useParams()
@@ -116,13 +117,8 @@ export default function EpisodePage() {
           <div className="lg:col-span-2">
             <div className="w-full bg-black rounded-lg overflow-hidden mb-4">
               {videoSource ? (
-                <div className="aspect-video">
-                  <iframe
-                    src={videoSource}
-                    className="w-full h-full"
-                    allowFullScreen
-                    title={`${animeData.title} S${season}E${episode}`}
-                  ></iframe>
+                <div className="aspect-video relative">
+                  <Player videoSource={videoSource} title={`${animeData.title} S${season}E${episode}`} slug={slug} season={season} episode={episode} />
                 </div>
               ) : loadingEpisode ? (
                 <div className="aspect-video flex items-center justify-center bg-muted">
