@@ -12,10 +12,6 @@ import { type EpisodeDetails, type AnimeDetails, getEpisode, getAnimeDetails, AP
 import { EpisodeInteractionButtons } from "@/components/episode-interaction-buttons"
 import { Player } from "@/components/player"
 
-export const metadata: Metadata = {
-  robots: "noindex, nofollow",
-}
-
 export default function EpisodePage() {
   const params = useParams()
   const router = useRouter()
