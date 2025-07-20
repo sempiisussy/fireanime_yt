@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Metadata } from "next"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -10,6 +11,10 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { type EpisodeDetails, type AnimeDetails, getEpisode, getAnimeDetails, API_BASE_IMG_URL } from "@/lib/api"
 import { EpisodeInteractionButtons } from "@/components/episode-interaction-buttons"
 import { Player } from "@/components/player"
+
+export const metadata: Metadata = {
+  robots: "noindex, nofollow",
+}
 
 export default function EpisodePage() {
   const params = useParams()

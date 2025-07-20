@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "Ani.cx - Your Ultimate Anime Streaming Platform",
   description: "Watch the latest anime episodes, explore new series, and stay up to date with the anime calendar.",
   generator: "Next.js",
+  robots: "index, follow",
 }
 
 export default function RootLayout({
