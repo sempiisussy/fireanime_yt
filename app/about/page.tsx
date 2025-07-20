@@ -4,8 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Heart, Users, Code, Globe, Github, MessageSquare } from "lucide-react"
+import { Heart, Users, Code, Globe, MessageSquare } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "About Ani.cx - A Community Project",
@@ -106,42 +105,6 @@ export default function AboutPage() {
           <Separator className="my-12" />
 
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-center mb-8">Our Community Contributors</h2>
-            <p className="text-center text-muted-foreground mb-8">
-              Ani.cx wouldn't exist without these amazing volunteers who contribute their time and skills.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {[
-                { name: "Yuki Tanaka", role: "Founder", avatar: "/placeholder.svg" },
-                { name: "Alex Chen", role: "Lead Developer", avatar: "/placeholder.svg" },
-                { name: "Maria Rodriguez", role: "UI/UX Designer", avatar: "/placeholder.svg" },
-                { name: "David Kim", role: "Content Curator", avatar: "/placeholder.svg" },
-                { name: "Sophia Wang", role: "Community Manager", avatar: "/placeholder.svg" },
-                { name: "James Wilson", role: "Backend Developer", avatar: "/placeholder.svg" },
-                { name: "Aisha Patel", role: "Translator", avatar: "/placeholder.svg" },
-                { name: "Kenji Nakamura", role: "Quality Assurance", avatar: "/placeholder.svg" },
-              ].map((contributor, index) => (
-                <div key={index} className="flex flex-col items-center text-center">
-                  <Avatar className="h-20 w-20 mb-3">
-                    <AvatarImage src={contributor.avatar} alt={contributor.name} />
-                    <AvatarFallback>
-                      {contributor.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
-                  </Avatar>
-                  <h3 className="font-medium">{contributor.name}</h3>
-                  <p className="text-sm text-muted-foreground">{contributor.role}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <Separator className="my-12" />
-
-          <div className="mb-12">
             <h2 className="text-2xl font-bold text-center mb-8">How You Can Contribute</h2>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -155,11 +118,6 @@ export default function AboutPage() {
                     help improve Ani.cx.
                   </p>
                   <div className="flex gap-4">
-                    <Link href={"https://github.com/FireAnime/fireanime"} target="_blank">
-                      <Button variant="outline" className="flex items-center gap-2">
-                        <Github className="h-4 w-4" /> GitHub
-                      </Button>
-                    </Link>
                     <Link href={"mailto:admin@fireani.me"}>
                       <Button className="flex items-center gap-2 bg-red-600 hover:bg-red-700">
                         <MessageSquare className="h-4 w-4" /> Contact Us
@@ -198,4 +156,3 @@ export default function AboutPage() {
     </div>
   )
 }
-
