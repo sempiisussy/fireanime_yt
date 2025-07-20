@@ -374,6 +374,26 @@ export async function getBest(page: number): Promise<AnimeSearchResponse> {
   return response.json()
 }
 
+export async function getBestLast24h(page: number): Promise<AnimeSearchResponse> {
+  const response = await fetch(`${API_BASE_URL}/animes/best-last-24h?page=${encodeURIComponent(page)}`, {
+    next: { revalidate: 3600 },
+  })
+  if (!response.ok) {
+    throw new Error("Failed to list best animes of the last 24 hours")
+  }
+  return response.json()
+}
+
+export async function getBestLast7d(page: number): Promise<AnimeSearchResponse> {
+  const response = await fetch(`${API_BASE_URL}/animes/best-last-7d?page=${encodeURIComponent(page)}`, {
+    next: { revalidate: 3600 },
+  })
+  if (!response.ok) {
+    throw new Error("Failed to list best animes of the last 7 days")
+  }
+  return response.json()
+}
+
 export async function getNewestEpisodes(page: number): Promise<NewestAnimeEpisodesResponse> {
   const response = await fetch(`${API_BASE_URL}/animes/newest-episodes?page=${encodeURIComponent(page)}`, {
     next: { revalidate: 60 },
