@@ -1,28 +1,21 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
-import { getBest, getNewestEpisodes, getBestLast24h, getBestLast7d } from "@/lib/api"
-import AnimeGrid from "@/components/anime-grid"
-import AnimeEpisodeGrid from "@/components/anime-episode-grid"
 import LastSeenEpisodes from "@/components/last-seen-episodes"
+import { Suspense } from "react"
+import AnimeGridSkeleton from "@/components/anime-grid-skeleton"
+import TrendingAnimeGrid from "@/components/trending-anime-grid"
+import Best24hAnimeGrid from "@/components/best-24h-anime-grid"
+import Best7dAnimeGrid from "@/components/best-7d-anime-grid"
+import NewReleasesAnimeGrid from "@/components/new-releases-anime-grid"
+import AnimeEpisodeGridSkeleton from "@/components/anime-episode-grid-skeleton"
 
 export const metadata = {
   title: "Ani.cx - Home",
   description: "Watch the latest anime episodes and explore new series.",
 }
 
-export default async function HomePage() {
-  // Fetch data server-side
-  const trendingResponse = await getBest(1)
-  const newReleasesResponse = await getNewestEpisodes(1)
-  const bestLast24hResponse = await getBestLast24h(1)
-  const bestLast7dResponse = await getBestLast7d(1)
-
-  const trendingAnime = trendingResponse.data.slice(0, 12)
-  const newReleases = newReleasesResponse.data.slice(0, 12)
-  const bestLast24h = bestLast24hResponse.data.slice(0, 12)
-  const bestLast7d = bestLast7dResponse.data.slice(0, 12)
-
+export default function HomePage() {
   return (
     <div className="flex flex-col w-full lg:pl-60">
       <div className="container py-6">
@@ -37,7 +30,9 @@ export default async function HomePage() {
               </Link>
             </Button>
           </div>
-          <AnimeGrid animes={trendingAnime} />
+          <Suspense fallback={<AnimeGridSkeleton />}>
+            <TrendingAnimeGrid />
+          </Suspense>
         </div>
 
         <div className="mb-8">
@@ -49,7 +44,9 @@ export default async function HomePage() {
               </Link>
             </Button>
           </div>
-          <AnimeGrid animes={bestLast24h} />
+          <Suspense fallback={<AnimeGridSkeleton />}>
+            <Best24hAnimeGrid />
+          </Suspense>
         </div>
 
         <div className="mb-8">
@@ -61,7 +58,9 @@ export default async function HomePage() {
               </Link>
             </Button>
           </div>
-          <AnimeGrid animes={bestLast7d} />
+          <Suspense fallback={<AnimeGridSkeleton />}>
+            <Best7dAnimeGrid />
+          </Suspense>
         </div>
 
         <div className="mb-8">
@@ -73,7 +72,9 @@ export default async function HomePage() {
               </Link>
             </Button>
           </div>
-          <AnimeEpisodeGrid animes={newReleases} />
+          <Suspense fallback={<AnimeEpisodeGridSkeleton />}>
+            <NewReleasesAnimeGrid />
+          </Suspense>
         </div>
       </div>
     </div>
