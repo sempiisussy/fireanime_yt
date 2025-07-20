@@ -45,7 +45,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSearch} className="flex-1 max-w-xl mx-auto relative">
+        <form onSubmit={handleSearch} className="flex-1 max-w-xl relative ml-14 lg:mx-auto lg:ml-0">
           <div className="relative w-full">
             <Input
               type="search"
