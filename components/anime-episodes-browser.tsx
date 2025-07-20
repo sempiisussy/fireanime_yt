@@ -125,11 +125,11 @@ export function AnimeEpisodesBrowser({ anime }: { anime: AnimeDetails }) {
           </div>
         )}
 
-        <p className="text-muted-foreground">
+        {/* <p className="text-muted-foreground">
           Invalid Selection: <br />
           currentSeason: {currentSeason ? JSON.stringify(currentSeason) : currentSeason}
           selectedSeason: {selectedSeason}
-        </p>
+        </p> */}
       </TabsContent>
 
       <TabsContent value="details">
